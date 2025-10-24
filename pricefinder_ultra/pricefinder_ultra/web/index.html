@@ -1,0 +1,18 @@
+<!doctype html><html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>글로벌 최저가 탐색기 ULTRA</title>
+<link rel="stylesheet" href="./styles.css"></head><body>
+<header class="header"><h1>글로벌 최저가 탐색기 <span class="badge">ULTRA</span></h1>
+<p class="sub">쿠팡·당근·번개·중고나라·11번가·G마켓·다나와·네이버쇼핑·SSG·알리익스프레스·테무·아마존</p></header>
+<main class="container">
+<section class="search-card"><div class="row">
+<input id="query" class="input" placeholder="GTIN/UPC/MPN 또는 'iPhone 15 Pro Max 256GB Black Titanium'">
+<select id="country" class="select"><option value="KR" selected>한국(KR)</option><option value="US">미국(US)</option><option value="DE">독일(DE)</option><option value="JP">일본(JP)</option></select>
+<select id="currency" class="select"><option value="KRW" selected>KRW</option><option value="USD">USD</option><option value="EUR">EUR</option></select>
+<button id="searchBtn" class="button">검색</button></div>
+<label class="checkbox"><input type="checkbox" id="includeUsed"> 중고 포함</label>
+<div class="meta"><a class="pill" href="./admin/index.html" target="_blank">관리자</a><span class="muted">* 데모: 샘플 데이터 기반</span></div>
+</section>
+<section id="results"></section></main>
+<footer class="footer"><p>ⓒ ULTRA 데모 — 각 마켓의 TOS/robots 준수 필수</p></footer>
+<script src="./app.js"></script></body></html>

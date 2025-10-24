@@ -1,0 +1,61 @@
+{
+  "sony|wh-1000xm5||black|wh1000xm5/b": {
+    "brand": "Sony",
+    "model": "WH-1000XM5",
+    "color": "Black",
+    "mpn": "WH1000XM5/B",
+    "gtin": [
+      "4548736133064"
+    ],
+    "dimensions": {
+      "unit": "mm",
+      "w": 223,
+      "h": 266,
+      "d": 96
+    },
+    "weight": {
+      "unit": "g",
+      "value": 250
+    }
+  },
+  "apple|iphone 15 pro max|256|black titanium|a3108": {
+    "brand": "Apple",
+    "model": "iPhone 15 Pro Max",
+    "color": "Black Titanium",
+    "capacity_gb": 256,
+    "mpn": "A3108",
+    "gtin": [
+      "0195949033280"
+    ],
+    "dimensions": {
+      "unit": "mm",
+      "w": 76.7,
+      "h": 159.9,
+      "d": 8.25
+    },
+    "weight": {
+      "unit": "g",
+      "value": 221
+    }
+  },
+  "samsung|galaxy tab s9|128|graphite|sm-x710": {
+    "brand": "Samsung",
+    "model": "Galaxy Tab S9",
+    "color": "Graphite",
+    "capacity_gb": 128,
+    "mpn": "SM-X710",
+    "gtin": [
+      "8806095128821"
+    ],
+    "dimensions": {
+      "unit": "mm",
+      "w": 165.8,
+      "h": 254.3,
+      "d": 5.9
+    },
+    "weight": {
+      "unit": "g",
+      "value": 498
+    }
+  }
+}
