@@ -1,0 +1,33 @@
+[package]
+name = "sourceclass-v4-core"
+version = "4.0.0"
+edition = "2021"
+description = "SourceClass V4 Core Engine - Mapping Search Engine for Code Intelligence"
+license = "MIT"
+
+[[bin]]
+name = "sourceclass-v4-core"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+walkdir = "2.4"
+glob = "0.3"
+sha2 = "0.10"
+tree-sitter = "0.20"
+tree-sitter-rust = "0.20"
+tree-sitter-python = "0.20"
+tree-sitter-javascript = "0.20"
+tree-sitter-typescript = "0.20"
+dashmap = "5.5"
+rayon = "1.8"
+memchr = "2.6"
+regex = "1.10"
+once_cell = "1.19"
+bitflags = "2.4"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
