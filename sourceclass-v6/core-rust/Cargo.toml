@@ -1,0 +1,22 @@
+[package]
+name = "sourceclass-core"
+version = "6.0.0"
+edition = "2021"
+description = "SourceClass V6 Core Engine - Codebase Intelligence Scanner"
+license = "MIT"
+
+[[bin]]
+name = "sourceclass-core"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+walkdir = "2.4"
+glob = "0.3"
+sha2 = "0.10"
+toml = "0.8"
+
+[profile.release]
+opt-level = 3
+lto = true

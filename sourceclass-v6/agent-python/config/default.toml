@@ -1,0 +1,45 @@
+# SourceClass V6 Configuration
+
+[provider]
+# Default provider: openai, openrouter, local
+default = "openai"
+
+[models]
+# Model selections per provider
+openai = "gpt-4o-mini"
+openrouter = "openai/gpt-4o-mini"
+local = "llama2"
+
+[analysis]
+# Maximum files to include in compressed IR
+max_files_in_prompt = 50
+
+# Maximum context plan items
+max_context_plan = 20
+
+# Token estimation multiplier (chars / X)
+token_chars_divisor = 4.0
+
+[security]
+# Files that should never be sent to LLM
+never_send_patterns = [
+    ".env",
+    "*.pem",
+    "*.key",
+    "*.crt",
+    "*secret*",
+    "*credential*",
+]
+
+# Risk severity threshold for blocking
+block_severity = "High"
+
+[output]
+# Default output directory
+output_dir = ".sourceclass-v6"
+
+# Report format
+format = "markdown"
+
+# Include timestamps
+timestamps = true
