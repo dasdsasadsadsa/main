@@ -15,3 +15,13 @@ pub struct ExplainContext {
     pub project_skeleton: crate::map::schema::ProjectSkeleton,
     pub centrality: crate::map::schema::Centrality,
 }
+
+/// Item in the context plan for LLM token optimization
+#[derive(Debug, Clone, serde::Serialize)]
+pub struct ContextPlanItem {
+    pub rank: usize,
+    pub file: String,
+    pub priority: String,
+    pub reason: String,
+    pub estimated_tokens: usize,
+}
