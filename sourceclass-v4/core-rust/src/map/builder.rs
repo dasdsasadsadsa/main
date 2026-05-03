@@ -51,7 +51,7 @@ impl ProjectMap {
         self.build_relationships();
         
         // Calculate centrality scores
-        self.calculate_centrality();
+        self.compute_centrality();
         
         Ok(())
     }
@@ -261,8 +261,8 @@ impl ProjectMap {
         }
     }
     
-    /// Calculate centrality scores for all elements
-    fn calculate_centrality(&mut self) {
+    /// Calculate centrality scores for all files (internal method)
+    fn compute_centrality(&mut self) {
         // Count incoming and outgoing edges for each file
         let mut file_incoming: HashMap<String, usize> = HashMap::new();
         let mut file_outgoing: HashMap<String, usize> = HashMap::new();
@@ -319,14 +319,18 @@ impl ProjectMap {
             }
         }
         
-        // Count subdirectories
-        for dir in &self.directories {
-            if let Some(parent_dir) = get_parent_dir(&dir.relative_path) {
-                if let Some(&dir_idx) = dir_map.get(&parent_dir) {
-                    if let Some(parent) = self.directories.get_mut(dir_idx) {
-                        parent.dir_count += 1;
-                        parent.children_count += 1;
-                    }
+        // Count subdirectories (fix borrow checker issue)
+        let parent_dirs: Vec<_> = self.directories.iter()
+            .filter_map(|dir| {
+                get_parent_dir(&dir.relative_path).map(|parent| (dir.id.clone(), parent))
+            })
+            .collect();
+        
+        for (dir_id, parent_dir) in parent_dirs {
+            if let Some(&dir_idx) = dir_map.get(&parent_dir) {
+                if let Some(parent) = self.directories.get_mut(dir_idx) {
+                    parent.dir_count += 1;
+                    parent.children_count += 1;
                 }
             }
         }
@@ -452,7 +456,7 @@ impl ProjectMap {
         }
     }
     
-    /// Calculate centrality for a specific element
+    /// Calculate centrality for a specific element (public method)
     pub fn calculate_centrality(&self, symbol: &Symbol) -> Centrality {
         let incoming = self.relationships.iter()
             .filter(|r| r.to_id == symbol.id)

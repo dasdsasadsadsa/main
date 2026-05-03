@@ -219,12 +219,10 @@ impl SymbolExtractor {
     /// Extract methods from Rust impl blocks
     fn extract_rust_impl_methods(&self, content: &str, file_id: &str, file_path: &str, symbols: &mut Vec<Symbol>) {
         // Find impl blocks and their methods
-        let impl_pattern = regex::Regex::new(r"(?m)^impl(\s+<[^>]+>)?\s+(\w+)")
-            .ok().into_iter()
-            .flat_map(|re| re.captures_iter(content))
-            .collect::<Vec<_>>();
+        let impl_pattern = regex::Regex::new(r"(?m)^impl(\s+<[^>]+>)?\s+(\w+)").unwrap();
+        let impl_matches: Vec<_> = impl_pattern.captures_iter(content).collect();
         
-        for impl_cap in impl_pattern {
+        for impl_cap in impl_matches {
             let impl_name = impl_cap.get(2).map(|m| m.as_str()).unwrap_or("");
             let impl_start = impl_cap.get(0).unwrap().end();
             
@@ -494,7 +492,7 @@ impl SymbolExtractor {
         }
         
         // Extract imports
-        let import_pattern = regex::Regex::new(r"(?m)^import\s+.*?from\s+['\"]([^'\"]+)['\"]")
+        let import_pattern = regex::Regex::new(r#"(?m)^import\s+.*?from\s+['"]([^'"]+)['"]"#)
             .map_err(|e| e.to_string())?;
         
         for cap in import_pattern.captures_iter(content) {

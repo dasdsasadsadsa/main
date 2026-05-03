@@ -1,1 +1,26 @@
+# Rust-specific ignores
+target/
+**/*.rs.bk
+**/*.rlib
 
+# Dependencies
+Cargo.lock
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db

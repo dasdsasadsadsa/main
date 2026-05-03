@@ -3,7 +3,7 @@
 //! Plans and prepares minimized context for LLM usage.
 
 use crate::map::builder::ProjectMap;
-use crate::map::schema::{ContextPlanItem, CentralityLevel};
+use crate::map::schema::CentralityLevel;
 
 /// Context planner for LLM token optimization
 pub struct ContextPlanner {
@@ -17,10 +17,10 @@ impl ContextPlanner {
     }
     
     /// Plan context for the entire project
-    pub fn plan(&self, map: &ProjectMap) -> Result<Vec<ContextPlanItem>, String> {
+    pub fn plan(&self, map: &ProjectMap) -> Result<Vec<crate::context::ContextPlanItem>, String> {
         let ir = map.to_ir();
         
-        let mut items: Vec<ContextPlanItem> = Vec::new();
+        let mut items: Vec<crate::context::ContextPlanItem> = Vec::new();
         
         // Sort files by centrality and role importance
         let mut sorted_files: Vec<_> = ir.files.iter().collect();
@@ -38,7 +38,7 @@ impl ContextPlanner {
             // Estimate tokens (rough estimate: ~4 chars per token average)
             let estimated_tokens = (file.size_bytes as f64 / 4.0) as usize;
             
-            items.push(ContextPlanItem {
+            items.push(crate::context::ContextPlanItem {
                 rank,
                 file: file.relative_path.clone(),
                 priority,
