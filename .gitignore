@@ -1,4 +1,3 @@
-```
 # Rust-specific ignores
 target/
 **/*.rs.bk
@@ -25,4 +24,3 @@ Cargo.lock
 # OS generated files
 .DS_Store
 Thumbs.db
-```
